@@ -16,6 +16,7 @@ export class AppComponent {
 arrSort: string [];
   ngOnInit () {
  var regionSorted;
+ var stateSorted;
     this.httpService.get('https://api.myjson.com/bins/dbg52').subscribe(
       data => {
         // console.log(data);
@@ -47,8 +48,9 @@ arrSort: string [];
 
       this.arrBirds.forEach(function(label2){
 
-        if(regionSorted.id=== label2.parent)
+        if(regionSorted.id === label2.parent)
 {
+  stateSorted = label2;
   console.log('tatudu ',label2.parent)
 }
   });
