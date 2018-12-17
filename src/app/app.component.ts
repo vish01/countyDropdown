@@ -22,12 +22,10 @@ arrSort: string [];
  var regionSorted
  var stateSorted; 
  var countySorted;
- var parent;
 var id;
  var result;
     this.httpService.get('https://api.myjson.com/bins/dbg52').subscribe(
       data => {
-        var parent;
         // console.log(data);
         this.arrBirds = data as string [];	 
       // Fetch Regions 
