@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -9,7 +12,7 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'JSON to Table Example';
+  title = 'Binding json data to the dropdown Assessment';
   constructor (private httpService: HttpClient) { }
   arrBirds: string [];
   arrBirdsRegion: string [];
@@ -25,8 +28,8 @@ arrSort: string [];
       data => {
         // console.log(data);
         this.arrBirds = data as string [];	 
-// Fetch Regions
-      this.arrBirds.forEach(function(label){
+      // Fetch Regions 
+      this.arrBirds.map(function(label){
      
         if(label.parent === null)
         {
@@ -36,9 +39,8 @@ arrSort: string [];
         }   
       
       });   
-      this.regionSorted = regionSorted as string[];
       //Fetch States
-      this.arrBirds.forEach(function(label2){
+      this.arrBirds.map(function(label2){
 
         if(regionSorted.id === label2.parent)
 {
@@ -47,16 +49,15 @@ arrSort: string [];
 } 
 });
 
-
 this.arrBirds.forEach(function(label3){
-  if(stateSorted.id ===label3.parent)
+  if(stateSorted.id === label3.parent)
   {
     countySorted = label3;
     console.log("Counties", countySorted);
   }
 
   });
-      
+
       (err: HttpErrorResponse) => {
         console.log (err.message);
       }
