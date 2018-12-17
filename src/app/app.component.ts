@@ -23,12 +23,47 @@ arrSort: string [];
  var stateSorted; 
  var countySorted;
  var parent;
- var sid;
+var id;
+ var result;
     this.httpService.get('https://api.myjson.com/bins/dbg52').subscribe(
       data => {
+        var parent;
         // console.log(data);
         this.arrBirds = data as string [];	 
       // Fetch Regions 
+
+      // var groupBy = function(xs, key) {
+      //   return xs.reduce(function(rv, x) {
+      //     (rv[x[key]] = rv[x[key]] || []).push(x);
+      //     return rv;
+      //   }, {});
+      // };
+      
+      // console.log(groupBy(['one', 'two', 'three'], 'length'));
+      
+      
+
+      // var map = {};
+      // for(var i = 0; i < this.arrBirds.length; i++){
+      //     var obj = this.arrBirds[i];
+      //     obj.parent= [];
+  
+      //     map[obj.parent] = obj;
+  
+      //     var parent = obj.parent || 'obj.id';
+      //     if(!map[parent]){
+      //         map[parent] = {
+      //             id: []
+      //         };
+      //     }
+      //     map[obj.parent].push(obj);
+          
+      //     // console.log(map);
+
+      // }
+  
+  
+
       this.arrBirds.map(function(label){
      
         if(label.parent === null)
@@ -70,6 +105,3 @@ this.arrBirds.forEach(function(label3){
   }
 
 }
-
-
-
