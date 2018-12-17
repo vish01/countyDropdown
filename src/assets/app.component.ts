@@ -43,8 +43,8 @@ arrSort: string [];
         if(regionSorted.id === label2.parent)
 {
   stateSorted = label2;
-  console.log('states ',label2.name);
-} 
+  console.log('states ',label2.name)
+}
 });
 
 
