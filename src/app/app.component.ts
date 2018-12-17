@@ -70,7 +70,7 @@ var id;
           regionSorted = label;
             console.log(regionSorted);
         }   
-      
+      return regionSorted;
       });   
       //Fetch States
       this.arrBirds.map(function(label2){
